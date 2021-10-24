@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `desciption` varchar(500) NOT NULL,
   `dimensions` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
-  `expected_delivery_date` date NOT NULL,
+  `expected_delivery_days` int(3) NOT NULL,
   `warranty` varchar(255) NOT NULL,
   `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
