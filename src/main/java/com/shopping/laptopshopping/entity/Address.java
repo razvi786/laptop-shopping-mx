@@ -3,11 +3,14 @@ package com.shopping.laptopshopping.entity;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.lang.NonNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,19 +23,21 @@ import lombok.NoArgsConstructor;
 @Table(name = "address")
 public class Address {
 
-  @Id private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-  private String pincode;
+  @NonNull private String country;
 
-  private String city;
+  @NonNull private String state;
 
-  private String Street;
+  @NonNull private String city;
+
+  @NonNull private String pincode;
 
   private String area;
 
-  private String state;
-
-  private String country;
+  @NonNull private String street;
 
   @CreationTimestamp private LocalDateTime createdDatetime;
 

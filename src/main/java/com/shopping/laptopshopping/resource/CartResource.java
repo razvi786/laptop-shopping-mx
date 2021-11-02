@@ -13,38 +13,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopping.laptopshopping.entity.Role;
-import com.shopping.laptopshopping.service.RoleService;
+import com.shopping.laptopshopping.entity.Cart;
+import com.shopping.laptopshopping.service.CartService;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("api/")
-public class RoleResource {
+public class CartResource {
 
-  @Autowired RoleService roleService;
+  @Autowired CartService cartService;
 
-  @GetMapping("role")
-  public List<Role> getRoles() {
-    return roleService.getAllRoles();
+  @GetMapping("cart")
+  public List<Cart> getCarts() {
+    return cartService.getAllCarts();
   }
 
-  @GetMapping("role/{id}")
-  public Role getRoleById(@PathVariable("id") Integer id) {
-    return roleService.getRoleById(id);
+  @GetMapping("cart/{id}")
+  public Cart getCartById(@PathVariable("id") Integer id) {
+    return cartService.getCartById(id);
   }
 
-  @PostMapping("role")
-  public Role saveRole(@RequestBody Role role) {
-    return roleService.saveOrUpdateRole(role);
+  @PostMapping("cart")
+  public Cart saveCart(@RequestBody Cart cart) {
+    return cartService.saveOrUpdateCart(cart);
   }
 
-  @PutMapping("role")
-  public Role updateRole(@RequestBody Role role) {
-    return roleService.saveOrUpdateRole(role);
+  @PutMapping("cart")
+  public Cart updateCart(@RequestBody Cart cart) {
+    return cartService.saveOrUpdateCart(cart);
   }
 
-  @DeleteMapping("role/{id}")
-  public void deleteRole(@PathVariable("id") Integer id) {
-    roleService.deleteRoleById(id);
+  @DeleteMapping("cart/{id}")
+  public boolean deleteCart(@PathVariable("id") Integer id) {
+    return cartService.deleteCartById(id);
   }
 }

@@ -20,7 +20,7 @@ public class UserService {
     try {
       users = userRepo.findAll();
     } catch (Exception exception) {
-      System.out.println("Exception while finding all users: " + exception.getLocalizedMessage());
+      System.out.println("Exception while finding all users: " + exception);
     }
     return users;
   }
@@ -35,7 +35,7 @@ public class UserService {
         System.out.println("User not found with id: " + id);
       }
     } catch (IllegalArgumentException exception) {
-      System.out.println("Exception while finding User: " + exception.getLocalizedMessage());
+      System.out.println("Exception while finding User: " + exception);
     }
     return user;
   }
@@ -45,8 +45,7 @@ public class UserService {
     try {
       savedUser = userRepo.save(user);
     } catch (Exception exception) {
-      System.out.println(
-          "Exception while saving/updating User: " + exception.getLocalizedMessage());
+      System.out.println("Exception while saving/updating User: " + exception);
     }
     return savedUser;
   }
@@ -56,7 +55,7 @@ public class UserService {
       userRepo.deleteById(id);
       return true;
     } catch (Exception exception) {
-      System.out.println("Exception while deleting User: " + exception.getLocalizedMessage());
+      System.out.println("Exception while deleting User: " + exception);
       return false;
     }
   }

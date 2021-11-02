@@ -14,37 +14,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopping.laptopshopping.entity.Address;
-import com.shopping.laptopshopping.repository.AddressRepository;
+import com.shopping.laptopshopping.service.AddressService;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("api/")
 public class AddressResource {
 
-  @Autowired AddressRepository addressRepo;
+  @Autowired AddressService addressService;
 
   @GetMapping("address")
   public List<Address> getAllAddresses() {
-    return addressRepo.findAll();
+    return addressService.getAllAddresses();
   }
 
   @GetMapping("address/{id}")
   public Address getAddressById(@PathVariable("id") Integer id) {
-    return addressRepo.findById(id).orElse(null);
+    return addressService.getAddressById(id);
   }
 
   @PostMapping("address")
   public Address saveAddress(@RequestBody Address address) {
-    return addressRepo.save(address);
+    return addressService.saveOrUpdateAddress(address);
   }
 
   @PutMapping("address")
   public Address updateAddress(@RequestBody Address address) {
-    return addressRepo.save(address);
+    return addressService.saveOrUpdateAddress(address);
   }
 
   @DeleteMapping("address/{id}")
   public void deleteAddress(@PathVariable("id") Integer id) {
-    addressRepo.deleteById(id);
+    addressService.deleteAddressById(id);
   }
 }

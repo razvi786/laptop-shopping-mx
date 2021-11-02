@@ -38,6 +38,8 @@ public class User {
 
   @NonNull private String securityQuestion;
 
+  @NonNull private String answer;
+
   @NonNull private String phone;
 
   @OneToOne(cascade = CascadeType.ALL)

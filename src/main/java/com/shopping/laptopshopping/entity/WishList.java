@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -23,14 +25,16 @@ import lombok.NoArgsConstructor;
 @Table(name = "wish_list")
 public class WishList {
 
-  @Id private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
+
+  //  @OneToMany(cascade = CascadeType.ALL)
+  //  private List<Product> products;
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "user_id", referencedColumnName = "id")
   private User user;
-
-  //  @OneToMany(cascade = CascadeType.ALL)
-  //  private List<Product> products;
 
   @CreationTimestamp private LocalDateTime createdDatetime;
 

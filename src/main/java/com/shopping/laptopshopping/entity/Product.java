@@ -3,11 +3,14 @@ package com.shopping.laptopshopping.entity;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.lang.NonNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,19 +23,21 @@ import lombok.NoArgsConstructor;
 @Table(name = "product")
 public class Product {
 
-  @Id private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-  private String name;
+  @NonNull private String name;
 
-  private String price;
+  @NonNull private String price;
 
-  private String description;
+  @NonNull private String description;
 
   private String dimensions;
 
-  private String url;
+  @NonNull private String imageUrl;
 
-  private Integer expectedDeliveryDays;
+  @NonNull private Integer expectedDeliveryDays;
 
   private String warranty;
 

@@ -3,6 +3,8 @@ package com.shopping.laptopshopping.entity;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,9 +22,25 @@ import lombok.NoArgsConstructor;
 @Table(name = "feature")
 public class Feature {
 
-  @Id private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-  // Add more fields
+  private String color;
+
+  private String ram;
+
+  private String storage;
+
+  private String battery;
+
+  private String screenSize;
+
+  private String processor;
+
+  private String operatingSystem;
+
+  private boolean touchScreen;
 
   @CreationTimestamp private LocalDateTime createdDatetime;
 

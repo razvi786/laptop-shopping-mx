@@ -14,37 +14,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopping.laptopshopping.entity.Delivery;
-import com.shopping.laptopshopping.repository.DeliveryRepository;
+import com.shopping.laptopshopping.service.DeliveryService;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("api/")
 public class DeliveryResource {
 
-  @Autowired DeliveryRepository deliveryRepo;
+  @Autowired DeliveryService deliveryService;
 
   @GetMapping("delivery")
   public List<Delivery> getDeliveries() {
-    return deliveryRepo.findAll();
+    return deliveryService.getAllDeliveries();
   }
 
   @GetMapping("delivery/{id}")
   public Delivery getDeliveryById(@PathVariable("id") Integer id) {
-    return deliveryRepo.findById(id).orElse(null);
+    return deliveryService.getDeliveryById(id);
   }
 
   @PostMapping("delivery")
   public Delivery saveDelivery(@RequestBody Delivery delivery) {
-    return deliveryRepo.save(delivery);
+    return deliveryService.saveOrUpdateDelivery(delivery);
   }
 
   @PutMapping("delivery")
   public Delivery updateDelivery(@RequestBody Delivery delivery) {
-    return deliveryRepo.save(delivery);
+    return deliveryService.saveOrUpdateDelivery(delivery);
   }
 
   @DeleteMapping("delivery/{id}")
   public void deleteDelivery(@PathVariable("id") Integer id) {
-    deliveryRepo.deleteById(id);
+    deliveryService.deleteDeliveryById(id);
   }
 }
